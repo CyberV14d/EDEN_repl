@@ -1,0 +1,15 @@
+name: eden
+description: "EDEN - A latent diffusion model for anime-style character generation"
+runtime: "python:3.10"
+entrypoint: "python inference.py"
+
+inputs:
+  prompt:
+    type: string
+    description: "Text prompt to generate an image"
+    default: "a girl in futuristic armor"
+
+outputs:
+  image:
+    type: image
+    description: "Generated image"
