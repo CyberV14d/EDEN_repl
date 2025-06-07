@@ -1,15 +1,27 @@
-name: eden
-description: "EDEN - A latent diffusion model for anime-style character generation"
+name: eden-interpolation
+description: "EDEN: Deep latent diffusion model for video and image frame interpolation."
 runtime: "python:3.10"
-entrypoint: "python inference.py"
+entrypoint: "inference.py:run"
 
 inputs:
-  prompt:
-    type: string
-    description: "Text prompt to generate an image"
-    default: "a girl in futuristic armor"
+  frame_0_path:
+    type: path
+    description: "Path to the first input image (frame 0)"
+    required: true
+
+  frame_1_path:
+    type: path
+    description: "Path to the second input image (frame 1)"
+    required: true
+
+  config_path:
+    type: path
+    description: "Path to EDEN config YAML file"
+    default: "configs/eval_eden.yaml"
+    required: false
 
 outputs:
-  image:
-    type: image
-    description: "Generated image"
+  output:
+    type: path
+    description: "Path to the interpolated output image"
+
